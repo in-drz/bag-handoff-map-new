@@ -1,10 +1,7 @@
 #sidebarA {
-  color: black;
   display: flex;
   flex-direction: column;
-  max-height: 100vh;     /* prevent overflow below screen */
-  overflow-y: auto;      /* allow scroll if needed */
-  padding-bottom: 0;     /* remove excess bottom padding */
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -132,7 +129,8 @@
   }
 
 #listings {
+  flex-grow: 1;
   overflow-y: auto;
-  max-height: calc(100vh - 240px); /* Adjust 200px to match space used by header/buttons */
+  padding: 12px;
 }
 
