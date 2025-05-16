@@ -130,4 +130,8 @@
 
   }
 
-  
+#listings {
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* Adjust 200px to match space used by header/buttons */
+}
+
