@@ -41,17 +41,36 @@ function flyToLocation(currentFeature) {
 
 function createPopup(currentFeature) {
   const popups = document.getElementsByClassName('mapboxgl-popup');
-  /** Check if there is already a popup on the map and if so, remove it */
   if (popups[0]) popups[0].remove();
+
+  let html = '';
+
+  if (currentDatasetKey === 'resource_responders') {
+    html = `
+      <h3>${currentFeature.properties.full_name}</h3>
+      <p><b>Address:</b> ${currentFeature.properties.physical_address}</p>
+      <p><b>Phone:</b> ${currentFeature.properties.phone_number}</p>
+      <p><b>Pick-Up/Drop-Off:</b> ${currentFeature.properties.pick_up}</p>
+      <p><b>Max Distance:</b> ${currentFeature.properties.max_distance || 'N/A'} mi</p>
+    `;
+  } else if (currentDatasetKey === 'bag_donations') {
+    html = `
+      <h3>${currentFeature.properties.full_name}</h3>
+      <p><b>Address:</b> ${currentFeature.properties.physical_address}</p>
+      <p><b>Phone:</b> ${currentFeature.properties.phone_number}</p>
+      <p><b>Number & Type of Items:</b> ${currentFeature.properties.number_and_type}</p>
+      <p><b>Drop-off or Pick-up:</b> ${currentFeature.properties.pick_up}</p>
+      <p><b>Notes:</b> ${currentFeature.properties.notes_second_location}</p>
+      <p><b>Status:</b> ${currentFeature.properties.status || 'N/A'}</p>
+    `;
+  }
+
   new mapboxgl.Popup({ closeOnClick: true })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<h3>' + currentFeature.properties[config.popupInfo] + '</h3>' +
-             '<p><b>Address:</b> ' + currentFeature.properties.physical_address + '</p>' +
-             '<p><b>Phone:</b> ' + currentFeature.properties.phone_number + '</p>' +
-             '<p><b>Pick-Up/Drop-Off?</b> ' + currentFeature.properties.pick_up + '</p>' +
-             '<p><b>Max Distance Willing to Travel:</b> ' + currentFeature.properties.max_distance + ' mi</p>')
+    .setHTML(html)
     .addTo(map);
 }
+
 
 function buildLocationList(locationData) {
   /* Add a new listing section to the sidebar. */
@@ -535,12 +554,12 @@ map.on('load', () => {
   }
 
   $('#toggleButton1').click(() => {
-  currentDatasetKey = 'resource_responders';
-  if (map.getSource('locationData')) {
-    map.removeLayer('locationData');
-    map.removeSource('locationData');
-  }
-  makeGeoJSON(config.CSV);
+    currentDatasetKey = 'resource_responders';
+    if (map.getSource('locationData')) {
+      map.removeLayer('locationData');
+      map.removeSource('locationData');
+    }
+    makeGeoJSON(config.CSV);
   });
   
   $('#toggleButton2').click(() => {
