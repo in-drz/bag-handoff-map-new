@@ -1,8 +1,9 @@
 /* global config csv2geojson turf Assembly $ */
 'use strict';
 
+let currentDatasetKey = 'resource_responders';
 mapboxgl.accessToken = config.accessToken;
-const columnHeaders = config.sideBarInfo;
+const columnHeaders = config.sideBarInfo[currentDatasetKey];
 
 let geojsonData = {};
 const filteredGeojson = {
@@ -534,20 +535,20 @@ map.on('load', () => {
   }
 
   $('#toggleButton1').click(() => {
-    
-    if (map.getSource('locationData')) {
+  currentDatasetKey = 'resource_responders';
+  if (map.getSource('locationData')) {
     map.removeLayer('locationData');
     map.removeSource('locationData');
   }
-    makeGeoJSON(config.CSV);
+  makeGeoJSON(config.CSV);
   });
   
   $('#toggleButton2').click(() => {
-    
+    currentDatasetKey = 'bag_donations';
     if (map.getSource('locationData')) {
-    map.removeLayer('locationData');
-    map.removeSource('locationData');
-  }
+      map.removeLayer('locationData');
+      map.removeSource('locationData');
+    }
     makeGeoJSON(config.CSV2);
   });
 });
