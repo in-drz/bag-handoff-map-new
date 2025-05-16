@@ -22,8 +22,8 @@ const config = {
     'pick_up',
     'number_and_type',
     'notes_second_location'
-  ]
-},
+    ]
+  },
   popupInfo: ['full_name'],
   filters: [
     {
