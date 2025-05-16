@@ -5,6 +5,7 @@
   max-height: 100vh;     /* prevent overflow below screen */
   overflow-y: auto;      /* allow scroll if needed */
   padding-bottom: 0;     /* remove excess bottom padding */
+  overflow: hidden;
 }
 
 
