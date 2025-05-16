@@ -124,14 +124,4 @@
 
   }
 
-/* Remove bottom whitespace by making sidebar scrollable and full height */
-#sidebarA {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow-y: auto;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
   
