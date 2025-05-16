@@ -12,7 +12,18 @@ const config = {
   title: 'Resource Responders',
   description:
     'This is a tool to find resources in Los Angeles and the surrounding areas. You can find the nearest food pantries, fridges, or shelters with just a few clicks',
-  sideBarInfo: ['full_name', 'email_address', 'physical_address'],
+  sideBarInfo: {
+  resource_responders: ['full_name', 'email_address', 'physical_address'],
+  bag_donations: [
+    'full_name',
+    'email_address',
+    'phone_number',
+    'physical_address',
+    'pick_up',
+    'number_and_type',
+    'notes_second_location'
+  ]
+},
   popupInfo: ['full_name'],
   filters: [
     {
