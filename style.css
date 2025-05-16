@@ -1,8 +1,8 @@
 #sidebarA {
-  max-height: 100vh;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #toggleButton1,
@@ -130,6 +130,6 @@
 #listings {
   flex-grow: 1;
   overflow-y: auto;
-  min-height: 0;
   padding: 12px;
+  min-height: 0; /* important for flex scroll */
 }
