@@ -124,5 +124,28 @@
 
   }
 
+/* Branding image styling */
+#branding {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: white;
+}
+
+#branding img {
+  max-width: 160px;
+  height: auto;
+}
+
+/* Remove bottom whitespace by making sidebar scrollable and full height */
+#sidebarA {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
 
   
